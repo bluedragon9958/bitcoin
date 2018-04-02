@@ -194,7 +194,8 @@ public:
         consensus.BIP34Hash = uint256S("0x0000000023b3a96d3484e5abb3755c413e7d41500f8e2a5c3f0dd01299cd8ef8");
         consensus.BIP65Height = 581885; // 00000000007f6655f22f98e72ed80d8b06dc761d5da09df0fa1dc4be4f861eb6
         consensus.BIP66Height = 330776; // 000000002104c8c45e99a8853285a3b592602a3ccde2b832481da85e9e4ba182
-        consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+//        consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -228,11 +229,48 @@ public:
         nDefaultPort = 18333;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1522639490, 0, 0x1d00ffff, 1, 50 * COIN);
+ // calculate Genesis Block
+        // Reset genesis
+        consensus.hashGenesisBlock = uint256S("0x");
+        std::cout << std::string("Begin calculating Testnet Genesis Block:\n");
+        if (true && (genesis.GetHash(consensus) != consensus.hashGenesisBlock)) {
+//                     LogPrintf("Calculating Mainnet Genesis Block:\n");
+            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
+            uint256 hash;
+            genesis.nNonce = ArithToUint256(0);
+            while (UintToArith256(genesis.GetHash(consensus)) > hashTarget)
+            {
+                genesis.nNonce = ArithToUint256(UintToArith256(genesis.nNonce) + 1);
+                         if (genesis.nNonce == ArithToUint256(arith_uint256(0)))
+                         {
+                             LogPrintf("NONCE WRAPPED, incrementing time");
+                             std::cout << std::string("NONCE WRAPPED, incrementing time:\n");
+                             ++genesis.nTime;
+                         }
+
+                         if ((int)genesis.nNonce.GetUint64(0) % 10000 == 0)
+                         {
+                              std::cout << strNetworkID << " hashTarget: " << hashTarget.ToString() << " nonce: " << genesis.nNonce.ToString() << " time: " << genesis.nTime << " hash: " << genesis.GetHash(consensus).ToString().c_str() << "\r";
+                         }
+
+            }
+                     std::cout << "Testnet ---\n";
+                     std::cout << "  nonce: " << genesis.nNonce.ToString() <<  "\n";
+                     std::cout << "   time: " << genesis.nTime << "\n";
+                     std::cout << "   hash: " << genesis.GetHash(consensus).ToString().c_str() << "\n";
+                     std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
+        }
+        std::cout << std::string("Finished calculating Testnet Genesis Block:\n");
+
+//        genesis = CreateGenesisBlock(1522639490, 0, 0x1d00ffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1519394018, 6446, 0x1f0fffff, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        printf("%s\n", consensus.hashGenesisBlock.ToString());
-        printf("%s\n", genesis.hashMerkleRoot.ToString());
+        printf("TEST GENESIS HASH: %s\n", consensus.hashGenesisBlock.ToString().c_str());
+        printf("TEST MERKLE ROOT: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+
+        assert(consensus.hashGenesisBlock == uint256S("0x0009b0d830d5e13f7a39dd6c30cae59ff95e1a4aa4fc22435dc1fcb92561cd8e"));
+        assert(genesis.hashMerkleRoot == uint256S("0xf1552bf3d58facdc6d7ec8461aff6b0560d20eb16e41749b9f8f5a7eaa1220fc"));
 
 //        assert(consensus.hashGenesisBlock == uint256S("0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"));
 //        assert(genesis.hashMerkleRoot == uint256S("0x4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"));

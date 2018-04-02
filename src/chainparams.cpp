@@ -239,9 +239,9 @@ public:
         consensus.hashGenesisBlock = uint256S("0x");
         std::cout << std::string("Begin calculating Testnet Genesis Block:\n");
 
-        if (true && (genesis.GetHash(consensus) != consensus.hashGenesisBlock)) {
-//            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
-//            uint256 hash;
+//        if (true && (genesis.GetHash(consensus) != consensus.hashGenesisBlock)) {
+            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
+            uint256 hash;
 //            genesis.nNonce = ArithToUint256(0);
 //            while (UintToArith256(genesis.GetHash(consensus)) > hashTarget) {
 //                genesis.nNonce = ArithToUint256(UintToArith256(genesis.nNonce) + 1);
@@ -263,7 +263,7 @@ public:
 //                     std::cout << "   time: " << genesis.nTime << "\n";
 //                     std::cout << "   hash: " << genesis.GetHash(consensus).ToString().c_str() << "\n";
 //                     std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
-        }
+//        }
         std::cout << std::string("Finished calculating Testnet Genesis Block:\n");
 
 

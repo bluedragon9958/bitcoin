@@ -231,6 +231,8 @@ public:
         nPruneAfterHeight = 1000;
 
 
+        genesis = CreateGenesisBlock(1522639490, 0, 0x1d00ffff, 1, 50 * COIN);
+        consensus.hashGenesisBlock = genesis.GetHash();
 
         // calculate Genesis Block
         // Reset genesis
@@ -263,9 +265,6 @@ public:
 //                     std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
         }
         std::cout << std::string("Finished calculating Testnet Genesis Block:\n");
-
-        genesis = CreateGenesisBlock(1522639490, 0, 0x1d00ffff, 1, 50 * COIN);
-        consensus.hashGenesisBlock = genesis.GetHash();
 
 
         printf("TEST GENESIS HASH: %s\n", consensus.hashGenesisBlock.ToString().c_str());

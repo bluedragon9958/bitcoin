@@ -243,7 +243,7 @@ public:
         uint256 hash;
         genesis.nNonce = 0;
 
-        while (UintToArith256(genesis.GetHash() > hashTarget) {
+        while (UintToArith256(genesis.GetHash() > hashTarget)) {
             genesis.nNonce = genesis.nNonce + 1;
 
             if (genesis.nNonce == 0) {

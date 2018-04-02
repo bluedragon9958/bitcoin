@@ -242,7 +242,7 @@ public:
 //        if (true && (genesis.GetHash(consensus) != consensus.hashGenesisBlock)) {
             arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
             uint256 hash;
-            genesis.nNonce = ArithToUint256(0);
+            genesis.nNonce = 0;
 //            while (UintToArith256(genesis.GetHash(consensus)) > hashTarget) {
 //                genesis.nNonce = ArithToUint256(UintToArith256(genesis.nNonce) + 1);
 //                         if (genesis.nNonce == ArithToUint256(arith_uint256(0)))

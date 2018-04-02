@@ -230,6 +230,9 @@ public:
         nDefaultPort = 18333;
         nPruneAfterHeight = 1000;
 
+        genesis = CreateGenesisBlock(1522639490, 0, 0x1d00ffff, 1, 50 * COIN);
+        consensus.hashGenesisBlock = genesis.GetHash();
+
         // calculate Genesis Block
         // Reset genesis
         consensus.hashGenesisBlock = uint256S("0x");
@@ -262,9 +265,7 @@ public:
         }
         std::cout << std::string("Finished calculating Testnet Genesis Block:\n");
 
-//        genesis = CreateGenesisBlock(1522639490, 0, 0x1d00ffff, 1, 50 * COIN);
-//        genesis = CreateGenesisBlock(1519394018, 6446, 0x1f0fffff, 1, 1 * COIN);
-//        consensus.hashGenesisBlock = genesis.GetHash();
+
 
         printf("TEST GENESIS HASH: %s\n", consensus.hashGenesisBlock.ToString().c_str());
         printf("TEST MERKLE ROOT: %s\n", genesis.hashMerkleRoot.ToString().c_str());

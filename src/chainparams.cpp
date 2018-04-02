@@ -270,8 +270,8 @@ public:
         printf("TEST GENESIS HASH: %s\n", consensus.hashGenesisBlock.ToString().c_str());
         printf("TEST MERKLE ROOT: %s\n", genesis.hashMerkleRoot.ToString().c_str());
 
-        assert(consensus.hashGenesisBlock == uint256S("0x0009b0d830d5e13f7a39dd6c30cae59ff95e1a4aa4fc22435dc1fcb92561cd8e"));
-        assert(genesis.hashMerkleRoot == uint256S("0xf1552bf3d58facdc6d7ec8461aff6b0560d20eb16e41749b9f8f5a7eaa1220fc"));
+        assert(consensus.hashGenesisBlock == uint256S("0x3d15e24006b68c725170a1f1215e4ce48f7412d4d5f5200d6ec32b33f88874a6"));
+        assert(genesis.hashMerkleRoot == uint256S("0x6f162a24ed57da8a2ff6f7f56b8291ecd4a0c875c2171f94bef9e9d13ae291c4"));
 
 //        assert(consensus.hashGenesisBlock == uint256S("0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"));
 //        assert(genesis.hashMerkleRoot == uint256S("0x4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"));

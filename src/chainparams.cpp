@@ -10,6 +10,7 @@
 #include <utilstrencodings.h>
 #include <assert.h>
 #include <chainparamsseeds.h>
+#include <arith_uint256.h>
 
 #include <iostream>   // std::cout
 #include <string>     // std::string, std::to_string

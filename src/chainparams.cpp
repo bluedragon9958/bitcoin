@@ -244,7 +244,7 @@ public:
         genesis.nNonce = 0;
 
         while (UintToArith256(genesis.GetHash(consensus)) > hashTarget) {
-            genesis.nNonce = (genesis.nNonce) + 1);
+            genesis.nNonce = genesis.nNonce + 1;
 
             if (genesis.nNonce == 0) {
                 LogPrintf("NONCE WRAPPED, incrementing time");
@@ -257,12 +257,12 @@ public:
             }
         }
 
-        std::cout << "Testnet ---\n";
-        std::cout << "  nonce: " << genesis.nNonce.ToString() <<  "\n";
-        std::cout << "   time: " << genesis.nTime << "\n";
-        std::cout << "   hash: " << genesis.GetHash(consensus).ToString().c_str() << "\n";
-        std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
-        std::cout << std::string("Finished calculating Testnet Genesis Block:\n");
+//        std::cout << "Testnet ---\n";
+//        std::cout << "  nonce: " << genesis.nNonce.ToString() <<  "\n";
+//        std::cout << "   time: " << genesis.nTime << "\n";
+//        std::cout << "   hash: " << genesis.GetHash(consensus).ToString().c_str() << "\n";
+//        std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
+//        std::cout << std::string("Finished calculating Testnet Genesis Block:\n");
 
         printf("TEST GENESIS HASH: %s\n", consensus.hashGenesisBlock.ToString().c_str());
         printf("TEST MERKLE ROOT: %s\n", genesis.hashMerkleRoot.ToString().c_str());

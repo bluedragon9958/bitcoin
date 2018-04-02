@@ -243,7 +243,7 @@ public:
         uint256 hash;
         genesis.nNonce = 0;
 
-        while (UintToArith256(genesis.GetHash(consensus)) > hashTarget) {
+        while (UintToArith256(genesis.GetHash() > hashTarget) {
             genesis.nNonce = genesis.nNonce + 1;
 
             if (genesis.nNonce == 0) {
@@ -253,7 +253,7 @@ public:
             }
 
             if ((int) genesis.nNonce.GetUint64(0) % 10000 == 0) {
-                std::cout << strNetworkID << " hashTarget: " << hashTarget.ToString() << " nonce: " << genesis.nNonce.ToString() << " time: " << genesis.nTime << " hash: " << genesis.GetHash(consensus).ToString().c_str() << "\r";
+                std::cout << strNetworkID << " hashTarget: " << hashTarget.ToString().c_str() << " nonce: " << genesis.nNonce.ToString().c_str() << " time: " << genesis.nTime << " hash: " << genesis.GetHash(consensus).ToString().c_str() << "\r";
             }
         }
 

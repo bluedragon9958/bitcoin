@@ -1624,7 +1624,7 @@
     </message>
     <message>
         <location line="-177"/>
-        <source>Balances</source>
+        <source>Bitcoin Zero Balances</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1649,7 +1649,7 @@
     </message>
     <message>
         <location line="+49"/>
-        <source>Recent transactions</source>
+        <source>Recent Bitcoin Zero transactions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4101,8 +4101,8 @@
     </message>
     <message>
         <location line="-397"/>
-        <source>Bitcoin Core</source>
-        <translation type="unfinished">Bitcoin Core</translation>
+        <source>Bitcoin Zero</source>
+        <translation type="unfinished">Bitcoin Zero</translation>
     </message>
     <message>
         <location line="+1"/>
